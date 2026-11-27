@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#E11D48" />
+  <title>MN by Nida Amir | Luxury Designer & Unstitched Fashion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #E11D48;       /* Vibrant Rose Crimson */
+      --primary-dark: #BE123C;
+      --secondary: #0D9488;     /* Radiant Emerald Teal */
+      --accent: #F59E0B;        /* Warm Marigold Gold */
+      --bg-main: #FFFBF7;       /* Warm Ivory Cream */
+      --bg-card: #FFFFFF;
+      --text-main: #1E1B18;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      transition: all 0.3s ease;
+    }
+
+    [dir="rtl"] body, [dir="rtl"] .rtl-font {
+      font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.9;
+    }
+
+    h1, h2, h3, .brand-font {
+      font-family: var(--font-heading);
+    }
+
+    .font-editorial { --font-heading: 'Playfair Display', serif; --font-body: 'Plus Jakarta Sans', sans-serif; }
+    .font-royal { --font-heading: 'Cinzel', serif; --font-body: 'Plus Jakarta Sans', sans-serif; }
+    .font-modern { --font-heading: 'Plus Jakarta Sans', sans-serif; --font-body: 'Plus Jakarta Sans', sans-serif; }
+
+    /* Marquee Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Glass & Vibrant Gradients */
+    .vibrant-gradient {
+      background: linear-gradient(135deg, #E11D48 0%, #F97316 52%, #F59E0B 100%);
+    }
+    .teal-gold-gradient {
+      background: linear-gradient(135deg, #0D9488 0%, #059669 55%, #D97706 100%);
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #FFF1F2; }
+    ::-webkit-scrollbar-thumb { background: #FB7185; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #E11D48; }
+  </style>
+</head>
+<body class="font-editorial min-h-screen flex flex-col">
+
+  <!-- Promotional Sale Banner -->
+  <div class="vibrant-gradient text-white text-xs sm:text-sm font-semibold py-2 overflow-hidden shadow-sm relative z-50">
+    <div class="animate-marquee flex items-center gap-10 px-4" id="saleBannerTrack">
+      <!-- Populated dynamically -->
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-rose-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between py-3 gap-3">
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl vibrant-gradient flex items-center justify-center text-white font-extrabold text-xl shadow-md group-hover:scale-105 transition">
+            MN
+          </div>
+          <div>
+            <span id="headerBrandTitle" class="brand-font text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-rose-600 via-orange-500 to-amber-600 bg-clip-text text-transparent block leading-none">
+              MN by Nida Amir
+            </span>
+            <span id="headerBrandTag" class="text-[11px] font-semibold tracking-widest uppercase text-teal-700 block mt-0.5">
+              Vibrant Festive & Designer Couture
+            </span>
+          </div>
+        </a>
+
+        <!-- Multi-Controls Bar -->
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Language Selector (10 Languages) -->
+          <select id="langSelect" onchange="changeLanguage(this.value)" title="Language" class="text-xs font-semibold bg-rose-50 hover:bg-rose-100 text-rose-900 border border-rose-200 rounded-xl px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500 cursor-pointer">
+            <option value="en">🌐 English</option>
+            <option value="ur">🇵🇰 اردو (Urdu)</option>
+            <option value="ar">🇸🇦 العربية (Arabic)</option>
+            <option value="pa">🌾 پنجابی (Punjabi)</option>
+            <option value="fa">🇮🇷 فارسی (Persian)</option>
+            <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ca">🇨🇦 Canadian (EN/FR)</option>
+          </select>
+
+          <!-- Currency Converter (6 Currencies) -->
+          <select id="currencySelect" onchange="changeCurrency(this.value)" title="Currency" class="text-xs font-semibold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 rounded-xl px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer">
+            <option value="PKR">PKR (Rs)</option>
+            <option value="USD">USD ($)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD (C$)</option>
+            <option value="SAR">SAR (﷼)</option>
+            <option value="AED">AED (د.إ)</option>
+          </select>
+
+          <!-- Font Style Switcher -->
+          <select id="fontSelect" onchange="changeFont(this.value)" title="Font Style" class="hidden sm:block text-xs font-semibold bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-200 rounded-xl px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer">
+            <option value="font-editorial">Aa Editorial</option>
+            <option value="font-royal">Aa Royal</option>
+            <option value="font-modern">Aa Modern</option>
+          </select>
+
+          <!-- Quick Action Buttons -->
+          <button onclick="openModal('sizeModal')" data-i18n="sizeChartBtn" class="text-xs font-bold bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 px-3 py-2 rounded-xl shadow-xs transition">
+            📏 Size Chart
+          </button>
+
+          <button onclick="openModal('wallpaperModal')" title="Wallpaper Studio" class="text-xs font-bold bg-white hover:bg-amber-50 text-amber-700 border border-amber-200 px-3 py-2 rounded-xl shadow-xs transition">
+            🎨 Theme
+          </button>
+
+          <button onclick="openModal('installModal')" data-i18n="installAppBtn" class="text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white px-3 py-2 rounded-xl shadow-xs transition">
+            📲 App
+          </button>
+
+          <button onclick="openAdminGate()" class="text-xs font-extrabold vibrant-gradient text-white px-3.5 py-2 rounded-xl shadow-md hover:opacity-95 transition flex items-center gap-1">
+            ⚙️ <span data-i18n="adminBtn">Admin</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub-Navigation Links -->
+      <nav class="flex items-center gap-5 overflow-x-auto py-2 border-t border-rose-50 text-xs sm:text-sm font-semibold text-stone-700">
+        <a href="#collections" data-i18n="navShop" class="hover:text-rose-600 whitespace-nowrap transition">Collections</a>
+        <a href="#tracking" data-i18n="navTrack" class="hover:text-rose-600 whitespace-nowrap transition">Track Order</a>
+        <a href="#reviews" data-i18n="navReviews" class="hover:text-rose-600 whitespace-nowrap transition">Reviews</a>
+        <a href="#about" data-i18n="navAbout" class="hover:text-rose-600 whitespace-nowrap transition">About Us</a>
+        <a href="#security" data-i18n="navSecurity" class="hover:text-rose-600 whitespace-nowrap transition">Trust & Security</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+
+    <!-- Vibrant Hero Section -->
+    <section class="relative overflow-hidden py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="rounded-3xl vibrant-gradient p-7 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-white/15 blur-2xl"></div>
+          <div class="absolute -left-16 -bottom-16 w-72 h-72 rounded-full bg-amber-300/20 blur-2xl"></div>
+
+          <div class="relative z-10 max-w-3xl">
+            <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4 border border-white/30">
+              ✨ New Festive & Unstitched Drop 2026
+            </span>
+            <h1 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+              Radiant Colors, Timeless Elegance by Nida Amir
+            </h1>
+            <p id="heroSubtitle" class="text-sm sm:text-lg text-rose-50/95 mb-7 max-w-2xl leading-relaxed">
+              Discover vibrant hand-picked Lawn, Chiffon, Silk & Luxury Embroidered ensembles crafted for modern grace. Worldwide delivery & instant WhatsApp ordering.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#collections" data-i18n="exploreBtn" class="bg-white text-rose-600 hover:bg-amber-50 font-extrabold px-6 py-3.5 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 text-sm sm:text-base">
+                🛍️ Shop New Arrivals
+              </a>
+              <a href="#tracking" data-i18n="trackHeroBtn" class="bg-teal-700/90 hover:bg-teal-800 text-white border border-teal-400/40 font-bold px-6 py-3.5 rounded-2xl shadow-lg transition text-sm sm:text-base">
+                📦 Track Your Parcel
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Brand / Category Filter & Product Catalog -->
+    <section id="collections" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-teal-600">Curated Wardrobe</span>
+          <h2 data-i18n="catalogHeading" class="text-2xl sm:text-4xl font-extrabold text-stone-900 mt-1">
+            Featured Designer & Lawn Collections
+          </h2>
+        </div>
+
+        <!-- Search Box -->
+        <div class="w-full md:w-72">
+          <input type="text" id="searchInput" oninput="renderProducts()" placeholder="🔍 Search suit, fabric or brand..." class="w-full bg-white border-2 border-rose-100 focus:border-rose-500 rounded-2xl px-4 py-2.5 text-sm shadow-xs focus:outline-none" />
+        </div>
+      </div>
+
+      <!-- Dynamic Brand / Collection Filter Pills (Editable via Admin!) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6" id="brandFilterBar">
+        <!-- Populated dynamically from brands list -->
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- Live Order Tracking Section -->
+    <section id="tracking" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="glass-panel rounded-3xl border border-teal-100 shadow-xl p-6 sm:p-10">
+        <div class="max-w-2xl mx-auto text-center">
+          <span class="inline-block bg-teal-100 text-teal-800 text-xs font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full mb-2">
+            Real-Time Dispatch Status
+          </span>
+          <h2 data-i18n="trackHeading" class="text-2xl sm:text-3xl font-extrabold text-stone-900">
+            Track Your Order
+          </h2>
+          <p class="text-sm text-stone-600 mt-2">
+            Enter your Order ID (e.g., <span class="font-bold text-rose-600">MN-1001</span> or <span class="font-bold text-rose-600">MN-1002</span>) to check live stitching & courier progress.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mt-6">
+            <input type="text" id="trackOrderInput" placeholder="Enter Order ID (e.g. MN-1001)" class="flex-grow bg-white border-2 border-teal-200 focus:border-teal-600 rounded-2xl px-4 py-3 text-sm font-semibold focus:outline-none" />
+            <button onclick="trackOrder()" class="teal-gold-gradient text-white font-extrabold px-6 py-3 rounded-2xl shadow-md hover:opacity-95 transition">
+              Track Now
+            </button>
+          </div>
+
+          <div id="trackResult" class="mt-6 text-left hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verified Customer Reviews Section -->
+    <section id="reviews" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-rose-600">Client Love</span>
+          <h2 data-i18n="reviewsHeading" class="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">
+            Verified Customer Reviews
+          </h2>
+        </div>
+        <button onclick="openModal('reviewModal')" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm px-5 py-2.5 rounded-2xl shadow-md transition self-start sm:self-auto">
+          ✍️ Write a Review
+        </button>
+      </div>
+
+      <div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="rounded-3xl bg-gradient-to-br from-rose-50 via-amber-50 to-teal-50 border border-rose-200/70 p-7 sm:p-12 shadow-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-rose-600">Our Story & Craft</span>
+            <h2 data-i18n="aboutHeading" class="text-2xl sm:text-4xl font-extrabold text-stone-900 mt-1 mb-4">
+              About MN by Nida Amir
+            </h2>
+            <p id="aboutTextDisplay" class="text-stone-700 text-sm sm:text-base leading-relaxed mb-6">
+              MN by Nida Amir celebrates the vibrant spirit of South Asian and contemporary luxury fashion. From breathable pure summer lawns and festive organza formals to bespoke stitched silhouettes, every ensemble is curated with rich colors, intricate embroidery, and uncompromising fabric quality for women across Pakistan, UK, USA, Canada, and the UAE.
+            </p>
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div class="bg-white/90 rounded-2xl p-4 shadow-xs border border-rose-100">
+                <div class="text-xl sm:text-2xl font-extrabold text-rose-600">100%</div>
+                <div class="text-xs font-semibold text-stone-600 mt-1">Original Brands</div>
+              </div>
+              <div class="bg-white/90 rounded-2xl p-4 shadow-xs border border-amber-100">
+                <div class="text-xl sm:text-2xl font-extrabold text-amber-600">Global</div>
+                <div class="text-xs font-semibold text-stone-600 mt-1">Worldwide Shipping</div>
+              </div>
+              <div class="bg-white/90 rounded-2xl p-4 shadow-xs border border-teal-100">
+                <div class="text-xl sm:text-2xl font-extrabold text-teal-600">Custom</div>
+                <div class="text-xs font-semibold text-stone-600 mt-1">Bespoke Stitching</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-3xl p-6 shadow-md border border-amber-200/60">
+              <h3 class="font-bold text-lg text-stone-900 mb-3 flex items-center gap-2">
+                💳 Accepted Payment Methods
+              </h3>
+              <ul class="space-y-2.5 text-sm text-stone-700">
+                <li class="flex items-center justify-between bg-emerald-50 px-3.5 py-2 rounded-xl font-semibold text-emerald-900">
+                  <span>EasyPaisa / JazzCash</span>
+                  <span>✅ Instant</span>
+                </li>
+                <li class="flex items-center justify-between bg-sky-50 px-3.5 py-2 rounded-xl font-semibold text-sky-900">
+                  <span>Bank Transfer (IBFT / RAAST)</span>
+                  <span>✅ Verified</span>
+                </li>
+                <li class="flex items-center justify-between bg-amber-50 px-3.5 py-2 rounded-xl font-semibold text-amber-900">
+                  <span>International (UK / US / CA / UAE)</span>
+                  <span>🌍 Remittance / Card</span>
+                </li>
+                <li class="flex items-center justify-between bg-rose-50 px-3.5 py-2 rounded-xl font-semibold text-rose-900">
+                  <span>Cash on Delivery (Pakistan)</span>
+                  <span>🚚 Available</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security & Trust Shield Section -->
+    <section id="security" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="rounded-3xl bg-stone-900 text-white p-7 sm:p-10 shadow-xl">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 bg-teal-500/20 border border-teal-400/40 text-teal-300 text-xs font-bold px-3.5 py-1 rounded-full mb-3">
+              🛡️ ISO/IEC 27001 Aligned & 256-Bit SSL Protected
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold">Shop With Complete Confidence</h2>
+            <p class="text-stone-300 text-sm mt-1 max-w-2xl">
+              Your personal details, custom measurements, and payment confirmations are protected under strict privacy standards and verified WhatsApp business channels.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full md:w-auto">
+            <div class="bg-white/10 border border-white/15 rounded-2xl p-3.5 text-center">
+              <div class="text-lg font-extrabold text-amber-400">ISO 27001</div>
+              <div class="text-[11px] text-stone-300">Data Privacy</div>
+            </div>
+            <div class="bg-white/10 border border-white/15 rounded-2xl p-3.5 text-center">
+              <div class="text-lg font-extrabold text-teal-400">100% Pure</div>
+              <div class="text-[11px] text-stone-300">Quality Checked</div>
+            </div>
+            <div class="bg-white/10 border border-white/15 rounded-2xl p-3.5 text-center col-span-2 sm:col-span-1">
+              <div class="text-lg font-extrabold text-rose-400">24/7 Care</div>
+              <div class="text-[11px] text-stone-300">Direct WhatsApp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-rose-100 py-8 px-4 text-center text-xs sm:text-sm text-stone-600 mt-10">
+    <div class="max-w-7xl mx-auto">
+      <p class="font-extrabold text-rose-600 text-base mb-1" id="footerBrandName">MN by Nida Amir</p>
+      <p>© 2026 MN by Nida Amir. All Rights Reserved. Luxury Unstitched & Designer Couture.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. ADMIN PIN GATE MODAL -->
+  <div id="pinModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-rose-100">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-extrabold text-stone-900">🔐 Admin Access</h3>
+        <button onclick="closeModal('pinModal')" class="text-stone-400 hover:text-stone-700 text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-stone-600 mb-4">Enter your Admin PIN to manage suits, editable lawn/brand names, orders, and store settings. (Default PIN: <b>1234</b>)</p>
+      <input type="password" id="adminPinInput" placeholder="Enter PIN" class="w-full border-2 border-rose-200 focus:border-rose-500 rounded-2xl px-4 py-3 text-center text-lg font-bold tracking-widest mb-4 focus:outline-none" />
+      <button onclick="verifyAdminPin()" class="w-full vibrant-gradient text-white font-extrabold py-3 rounded-2xl shadow-md">
+        Unlock Admin Panel
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. FULL ADMIN PANEL MODAL -->
+  <div id="adminModal" class="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 hidden items-center justify-center p-2 sm:p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-rose-200 overflow-hidden">
+      <!-- Admin Header -->
+      <div class="vibrant-gradient text-white px-6 py-4 flex items-center justify-between">
+        <div>
+          <h3 class="text-xl font-extrabold">⚙️ Store Admin Dashboard</h3>
+          <p class="text-xs text-rose-100">Manage Products, Dynamic Brand/Lawn Names, Orders & Settings</p>
+        </div>
+        <button onclick="closeModal('adminModal')" class="bg-white/20 hover:bg-white/30 text-white w-9 h-9 rounded-full font-bold text-lg">&times;</button>
+      </div>
+
+      <!-- Admin Tabs -->
+      <div class="flex overflow-x-auto bg-rose-50 border-b border-rose-100 px-4 pt-2 gap-2 text-xs sm:text-sm font-bold">
+        <button onclick="switchAdminTab('tabProducts')" id="btn-tabProducts" class="admin-tab px-4 py-2.5 rounded-t-xl bg-white text-rose-600 shadow-xs">👗 Products & Suits</button>
+        <button onclick="switchAdminTab('tabBrands')" id="btn-tabBrands" class="admin-tab px-4 py-2.5 rounded-t-xl text-stone-600 hover:text-rose-600">🏷️ Brand / Lawn Names</button>
+        <button onclick="switchAdminTab('tabOrders')" id="btn-tabOrders" class="admin-tab px-4 py-2.5 rounded-t-xl text-stone-600 hover:text-rose-600">📦 Orders & Tracking</button>
+        <button onclick="switchAdminTab('tabSettings')" id="btn-tabSettings" class="admin-tab px-4 py-2.5 rounded-t-xl text-stone-600 hover:text-rose-600">🛠️ Store & Security</button>
+      </div>
+
+      <!-- Admin Body -->
+      <div class="p-6 overflow-y-auto space-y-6 flex-grow">
+
+        <!-- TAB 1: PRODUCTS -->
+        <div id="tabProducts" class="admin-tab-content space-y-6">
+          <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-5">
+            <h4 id="productFormTitle" class="font-extrabold text-base text-stone-900 mb-3">➕ Add New Outfit / Suit Listing</h4>
+            <input type="hidden" id="editProductId" value="" />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <input type="text" id="prodName" placeholder="Outfit Title (e.g. Gulzar Crimson 3-Pc Lawn)" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <div class="flex gap-2">
+                <select id="prodBrandSelect" onchange="syncBrandInput(this.value)" class="border border-stone-300 rounded-xl px-3 py-2.5 bg-white w-1/2">
+                  <!-- Populated dynamically -->
+                </select>
+                <input type="text" id="prodBrandCustom" placeholder="Or type Brand/Lawn Name" class="border border-stone-300 rounded-xl px-3 py-2.5 bg-white w-1/2" />
+              </div>
+              <input type="number" id="prodPrice" placeholder="Price in PKR (e.g. 6500)" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <input type="text" id="prodFabric" placeholder="Fabric (e.g. Digital Lawn + Chiffon Dupatta)" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <input type="text" id="prodSizes" placeholder="Sizes (e.g. Unstitched, S, M, L, XL)" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <input type="text" id="prodBadge" placeholder="Badge (e.g. New Arrival, Hot Seller, 20% Off)" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <div class="sm:col-span-2 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="prodImageUrl" placeholder="Image URL OR choose file from gallery →" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white flex-grow" />
+                <label class="bg-teal-600 hover:bg-teal-700 text-white font-bold px-4 py-2.5 rounded-xl cursor-pointer text-center text-xs flex items-center justify-center">
+                  📷 Upload Photo
+                  <input type="file" accept="image/*" onchange="handleProductImageUpload(event)" class="hidden" />
+                </label>
+              </div>
+              <textarea id="prodDesc" rows="2" placeholder="Short description (embroidery details, dupatta length, etc.)" class="sm:col-span-2 border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white"></textarea>
+            </div>
+            <div class="flex gap-2 mt-4">
+              <button onclick="saveProduct()" class="vibrant-gradient text-white font-extrabold px-6 py-2.5 rounded-xl shadow-md text-sm">
+                💾 Save Listing
+              </button>
+              <button onclick="resetProductForm()" class="bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold px-4 py-2.5 rounded-xl text-sm">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <!-- Existing Products List -->
+          <div>
+            <h4 class="font-extrabold text-sm uppercase tracking-wider text-stone-600 mb-3">Current Store Listings</h4>
+            <div id="adminProductsList" class="space-y-2.5"></div>
+          </div>
+        </div>
+
+        <!-- TAB 2: EDITABLE BRAND / LAWN NAMES -->
+        <div id="tabBrands" class="admin-tab-content hidden space-y-5">
+          <div class="bg-teal-50 border border-teal-200 rounded-2xl p-5">
+            <h4 class="font-extrabold text-base text-teal-950 mb-1">🏷️ Manage Brand & Lawn Collection Names</h4>
+            <p class="text-xs text-teal-800 mb-4">Add, rename, or remove any Lawn / Designer brand names anytime. These appear as filter tabs on your homepage and in your product dropdown!</p>
+            <div class="flex gap-2">
+              <input type="text" id="newBrandNameInput" placeholder="Enter new Brand / Lawn name (e.g. Maria B, Sana Safinaz, Festive Lawn)" class="flex-grow border border-teal-300 rounded-xl px-4 py-2.5 text-sm bg-white" />
+              <button onclick="addBrandName()" class="bg-teal-600 hover:bg-teal-700 text-white font-extrabold px-5 py-2.5 rounded-xl text-sm">
+                + Add Brand
+              </button>
+            </div>
+          </div>
+
+          <div id="adminBrandsList" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+        </div>
+
+        <!-- TAB 3: ORDERS & TRACKING -->
+        <div id="tabOrders" class="admin-tab-content hidden space-y-5">
+          <div class="bg-rose-50 border border-rose-200 rounded-2xl p-5">
+            <h4 class="font-extrabold text-base text-stone-900 mb-3">📦 Add / Update Customer Order Tracking</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <input type="text" id="ordId" placeholder="Order ID (e.g. MN-1003)" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <input type="text" id="ordCustomer" placeholder="Customer Name & City" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <input type="text" id="ordItem" placeholder="Suit / Item Ordered" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+              <select id="ordStatus" class="border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white">
+                <option value="Order Confirmed">1. Order Confirmed</option>
+                <option value="Stitching & Quality Check">2. Stitching & Quality Check</option>
+                <option value="Dispatched via Courier">3. Dispatched via Courier</option>
+                <option value="Delivered">4. Delivered</option>
+              </select>
+              <input type="text" id="ordNote" placeholder="Courier Tracking # or Note (e.g. TCS #789456)" class="sm:col-span-2 border border-stone-300 rounded-xl px-3.5 py-2.5 bg-white" />
+            </div>
+            <button onclick="saveOrder()" class="mt-3 vibrant-gradient text-white font-extrabold px-5 py-2.5 rounded-xl text-sm shadow-sm">
+              Save Tracking Info
+            </button>
+          </div>
+          <div id="adminOrdersList" class="space-y-2.5"></div>
+        </div>
+
+        <!-- TAB 4: STORE SETTINGS & SECURITY -->
+        <div id="tabSettings" class="admin-tab-content hidden space-y-4 text-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold text-stone-700 mb-1">Store / Brand Name</label>
+              <input type="text" id="setBrandName" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5" />
+            </div>
+            <div>
+              <label class="block font-bold text-stone-700 mb-1">WhatsApp Order Number (with country code)</label>
+              <input type="text" id="setWhatsapp" placeholder="e.g. 923001234567" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block font-bold text-stone-700 mb-1">Top Sale Banner Announcement</label>
+              <input type="text" id="setSaleBanner" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block font-bold text-stone-700 mb-1">About Us Description</label>
+              <textarea id="setAboutText" rows="3" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5"></textarea>
+            </div>
+            <div>
+              <label class="block font-bold text-stone-700 mb-1">Change Admin PIN</label>
+              <input type="text" id="setNewPin" placeholder="New 4-6 digit PIN" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5" />
+            </div>
+          </div>
+          <button onclick="saveStoreSettings()" class="teal-gold-gradient text-white font-extrabold px-6 py-3 rounded-xl shadow-md">
+            ✅ Save All Store Settings
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SIZE CHART MODAL -->
+  <div id="sizeModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-rose-100">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-extrabold text-stone-900">📏 Standard & Unstitched Size Guide</h3>
+        <button onclick="closeModal('sizeModal')" class="text-stone-400 hover:text-stone-700 text-2xl font-bold">&times;</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs sm:text-sm text-left border-collapse">
+          <thead>
+            <tr class="vibrant-gradient text-white">
+              <th class="p-3 rounded-tl-xl">Size</th>
+              <th class="p-3">Chest (in / cm)</th>
+              <th class="p-3">Waist (in / cm)</th>
+              <th class="p-3">Hip (in / cm)</th>
+              <th class="p-3 rounded-tr-xl">Shirt Length</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-rose-100">
+            <tr class="bg-rose-50/40"><td class="p-3 font-bold">Small (S)</td><td class="p-3">19" / 48 cm</td><td class="p-3">18" / 46 cm</td><td class="p-3">20.5" / 52 cm</td><td class="p-3">42" / 107 cm</td></tr>
+            <tr><td class="p-3 font-bold">Medium (M)</td><td class="p-3">20.5" / 52 cm</td><td class="p-3">19.5" / 50 cm</td><td class="p-3">22" / 56 cm</td><td class="p-3">43" / 109 cm</td></tr>
+            <tr class="bg-rose-50/40"><td class="p-3 font-bold">Large (L)</td><td class="p-3">22.5" / 57 cm</td><td class="p-3">21.5" / 55 cm</td><td class="p-3">24" / 61 cm</td><td class="p-3">44" / 112 cm</td></tr>
+            <tr><td class="p-3 font-bold">XL</td><td class="p-3">24.5" / 62 cm</td><td class="p-3">23.5" / 60 cm</td><td class="p-3">26" / 66 cm</td><td class="p-3">45" / 114 cm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-stone-600 mt-4 bg-amber-50 p-3 rounded-xl border border-amber-200">
+        ✨ <b>Unstitched 3-Piece Standard:</b> Shirt 3.0 Meters | Dupatta 2.5 Meters | Trouser 2.5 Meters. Custom tailoring available on request!
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. WALLPAPER & THEME STUDIO MODAL -->
+  <div id="wallpaperModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-amber-100">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-extrabold text-stone-900">🎨 Custom Wallpaper & Palette</h3>
+        <button onclick="closeModal('wallpaperModal')" class="text-stone-400 hover:text-stone-700 text-2xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-stone-600 mb-4">Choose a vibrant preset backdrop or upload your own wallpaper from your phone or laptop:</p>
+      <div class="grid grid-cols-2 gap-2.5 mb-4 text-xs font-bold">
+        <button onclick="setWallpaperPreset('cream')" class="p-3 rounded-xl border-2 border-rose-200 bg-[#FFFBF7] text-stone-800">🌸 Warm Ivory Cream</button>
+        <button onclick="setWallpaperPreset('rose')" class="p-3 rounded-xl border-2 border-rose-300 bg-gradient-to-br from-rose-100 via-amber-50 to-teal-100 text-rose-950">🌺 Vibrant Silk Aura</button>
+        <button onclick="setWallpaperPreset('mint')" class="p-3 rounded-xl border-2 border-teal-300 bg-gradient-to-br from-teal-50 via-emerald-50 to-amber-50 text-teal-950">🌿 Emerald Mint Glow</button>
+        <button onclick="setWallpaperPreset('sunset')" class="p-3 rounded-xl border-2 border-amber-300 bg-gradient-to-br from-amber-100 via-orange-50 to-rose-100 text-amber-950">☀️ Marigold Sunset</button>
+      </div>
+      <label class="block w-full text-center vibrant-gradient text-white font-extrabold py-3 rounded-2xl cursor-pointer shadow-md text-sm">
+        🖼️ Upload Custom Wallpaper Image
+        <input type="file" accept="image/*" onchange="uploadCustomWallpaper(event)" class="hidden" />
+      </label>
+    </div>
+  </div>
+
+  <!-- 5. INSTALL AS MOBILE / DESKTOP APP MODAL -->
+  <div id="installModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-teal-100">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-xl font-extrabold text-stone-900">📲 Install as Mobile / Desktop App</h3>
+        <button onclick="closeModal('installModal')" class="text-stone-400 hover:text-stone-700 text-2xl font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs sm:text-sm text-stone-700">
+        <div class="bg-rose-50 p-3.5 rounded-2xl border border-rose-100">
+          <b class="text-rose-700">🍏 iPhone (Safari):</b> Tap the <b>Share</b> button at the bottom → select <b>"Add to Home Screen"</b>.
+        </div>
+        <div class="bg-teal-50 p-3.5 rounded-2xl border border-teal-100">
+          <b class="text-teal-700">📱 Infinix / Android (Chrome):</b> Tap the <b>⋮ Menu</b> (top right) → select <b>"Install App"</b> or <b>"Add to Home Screen"</b>.
+        </div>
+        <div class="bg-amber-50 p-3.5 rounded-2xl border border-amber-100">
+          <b class="text-amber-800">💻 Laptop / PC (Chrome / Edge):</b> Click the <b>Install icon (⊕)</b> in the address bar → click <b>Install</b> to keep it on your Desktop!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. WRITE REVIEW MODAL -->
+  <div id="reviewModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-amber-100">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-extrabold text-stone-900">✍️ Share Your Experience</h3>
+        <button onclick="closeModal('reviewModal')" class="text-stone-400 hover:text-stone-700 text-2xl font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-sm">
+        <input type="text" id="revName" placeholder="Your Name (e.g. Ayesha Khan)" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5" />
+        <input type="text" id="revCity" placeholder="City / Country (e.g. Lahore / London)" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5" />
+        <select id="revRating" class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5">
+          <option value="5">⭐⭐⭐⭐⭐ (5/5 - Outstanding)</option>
+          <option value="4">⭐⭐⭐⭐ (4/5 - Very Good)</option>
+        </select>
+        <textarea id="revComment" rows="3" placeholder="Write your feedback about fabric quality & colors..." class="w-full border border-stone-300 rounded-xl px-3.5 py-2.5"></textarea>
+        <button onclick="submitReview()" class="w-full vibrant-gradient text-white font-extrabold py-3 rounded-2xl shadow-md">
+          Submit Review
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ENGINE ==================== -->
+  <script>
+    // 1. Default Store Data (100% Editable via Admin Panel & Saved in LocalStorage)
+    const defaultData = {
+      settings: {
+        brandName: "MN by Nida Amir",
+        whatsapp: "923001234567",
+        saleBanner: "✨ GRAND FESTIVE & LAWN SALE 2026 — USE CODE: NIDA20 FOR FLAT 20% OFF • WORLDWIDE EXPRESS DELIVERY • 100% ORIGINAL DESIGNER COUTURE ✨",
+        aboutText: "MN by Nida Amir celebrates the vibrant spirit of South Asian and contemporary luxury fashion. From breathable pure summer lawns and festive organza formals to bespoke stitched silhouettes, every ensemble is curated with rich colors, intricate embroidery, and uncompromising fabric quality for women across Pakistan, UK, USA, Canada, and the UAE.",
+        pin: "1234"
+      },
+      // Completely editable Brand / Lawn collection names!
+      brands: [
+        "Festive Lawn '26",
+        "Luxury Chiffon",
+        "Silk Pret",
+        "Bridal Couture",
+        "Everyday Prints"
+      ],
+      products: [
+        {
+          id: 1,
+          name: "Gul-e-Rana Crimson Embroidered Lawn",
+          brand: "Festive Lawn '26",
+          pricePKR: 6850,
+          fabric: "Pure Swiss Lawn + Silk Dupatta",
+          sizes: "Unstitched, S, M, L",
+          badge: "Hot Seller",
+          image: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80",
+          desc: "Vibrant crimson & marigold digital lawn with heavy Schiffli neckline and pure silk printed dupatta."
+        },
+        {
+          id: 2,
+          name: "Firoza Emerald Organza Festive 3-Pc",
+          brand: "Luxury Chiffon",
+          pricePKR: 12500,
+          fabric: "Hand-Embellished Organza + Raw Silk",
+          sizes: "S, M, L, XL",
+          badge: "New Arrival",
+          image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
+          desc: "Radiant peacock teal formal suit adorned with golden zari, mirror work, and scalloped dupatta."
+        },
+        {
+          id: 3,
+          name: "Zardari Marigold & Coral Summer Pret",
+          brand: "Silk Pret",
+          pricePKR: 5400,
+          fabric: "Soft Cambric Cotton + Organza Dupatta",
+          sizes: "Unstitched, S, M, L",
+          badge: "20% Off",
+          image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80",
+          desc: "Bright sunlit marigold and coral hues tailored for effortless daytime elegance and festive gatherings."
+        }
+      ],
+      orders: [
+        {
+          id: "MN-1001",
+          customer: "Fatima Tariq (Lahore)",
+          item: "Gul-e-Rana Crimson Embroidered Lawn",
+          status: "Dispatched via Courier",
+          note: "TCS Tracking #PK-884920 — Expected delivery tomorrow."
+        },
+        {
+          id: "MN-1002",
+          customer: "Sana Malik (London, UK)",
+          item: "Firoza Emerald Organza Festive 3-Pc",
+          status: "Stitching & Quality Check",
+          note: "Custom Medium tailoring in progress at studio."
+        }
+      ],
+      reviews: [
+        { name: "Hira Zubair", city: "Islamabad", rating: 5, comment: "Colors are even brighter and richer in real life! The lawn fabric feels ultra-soft and premium." },
+        { name: "Zainab Ahmed", city: "Toronto, Canada", rating: 5, comment: "Ordered 4 stitched suits for Eid—perfect fitting and super fast international delivery!" },
+        { name: "Mehwish Kamran", city: "Karachi", rating: 5, comment: "Best customer service on WhatsApp and 100% original designer quality. Highly recommended!" }
+      ]
+    };
+
+    // Load or Initialize State
+    let storeData = JSON.parse(localStorage.getItem('mn_nida_amir_v3')) || defaultData;
+    let activeBrandFilter = "ALL";
+    let currentCurrency = "PKR";
+    let currentLang = "en";
+
+    const currencyRates = {
+      PKR: { symbol: "Rs. ", rate: 1 },
+      USD: { symbol: "$", rate: 0.0036 },
+      GBP: { symbol: "£", rate: 0.0028 },
+      CAD: { symbol: "C$", rate: 0.0050 },
+      SAR: { symbol: "SAR ", rate: 0.0135 },
+      AED: { symbol: "AED ", rate: 0.0132 }
+    };
+
+    const translations = {
+      en: { dir: "ltr", navShop: "Collections", navTrack: "Track Order", navReviews: "Reviews", navAbout: "About Us", navSecurity: "Trust & Security", exploreBtn: "🛍️ Shop New Arrivals", trackHeroBtn: "📦 Track Your Parcel", catalogHeading: "Featured Designer & Lawn Collections", trackHeading: "Track Your Order", reviewsHeading: "Verified Customer Reviews", aboutHeading: "About MN by Nida Amir", orderBtn: "Order on WhatsApp" },
+      ur: { dir: "rtl", navShop: "کلیکشنز", navTrack: "آرڈر ٹریک کریں", navReviews: "کسٹمر ریویوز", navAbout: "ہمارے بارے میں", navSecurity: "سیکیورٹی و اعتماد", exploreBtn: "🛍️ نئی کلیکشن دیکھیں", trackHeroBtn: "📦 پارسل ٹریک کریں", catalogHeading: "نئی لان اور ڈیزائنر کلیکشن", trackHeading: "اپنا آرڈر ٹریک کریں", reviewsHeading: "تصدیق شدہ کسٹمر ریویوز", aboutHeading: "MN by Nida Amir کا تعارف", orderBtn: "واٹس ایپ پر آرڈر کریں" },
+      ar: { dir: "rtl", navShop: "المجموعات", navTrack: "تتبع الطلب", navReviews: "آراء العملاء", navAbout: "من نحن", navSecurity: "الأمان والثقة", exploreBtn: "🛍️ تسوق الجديد", trackHeroBtn: "📦 تتبع شحنتك", catalogHeading: "تشكيلة الأزياء الفاخرة", trackHeading: "تتبع طلبك", reviewsHeading: "آراء العملاء الموثقة", aboutHeading: "عن MN by Nida Amir", orderBtn: "اطلب عبر واتساب" },
+      pa: { dir: "rtl", navShop: "کلیکشن", navTrack: "آرڈر لبھو", navReviews: "گاہکاں دی رائے", navAbout: "ساڈے بارے", navSecurity: "بھروسہ تے سیکیورٹی", exploreBtn: "🛍️ نویں سوٹ ویکھو", trackHeroBtn: "📦 پارسل چیک کرو", catalogHeading: "رنگ برنگی لان تے فینسی سوٹ", trackHeading: "اپنا آرڈر چیک کرو", reviewsHeading: "گاہکاں دے ریویوز", aboutHeading: "MN by Nida Amir بارے", orderBtn: "واٹس ایپ تے آرڈر کرو" },
+      fa: { dir: "rtl", navShop: "مجموعه‌ها", navTrack: "پیگیری سفارش", navReviews: "نظرات مشتریان", navAbout: "درباره ما", navSecurity: "امنیت و اعتماد", exploreBtn: "🛍️ مشاهده مدل‌های جدید", trackHeroBtn: "📦 پیگیری مرسوله", catalogHeading: "جدیدترین کالکشن لباس", trackHeading: "پیگیری سفارش شما", reviewsHeading: "نظرات خریداران", aboutHeading: "درباره MN by Nida Amir", orderBtn: "سفارش در واتساپ" },
+      hi: { dir: "ltr", navShop: "कलेक्शन", navTrack: "ऑर्डर ट्रैक करें", navReviews: "ग्राहक समीक्षा", navAbout: "हमारे बारे में", navSecurity: "सुरक्षा और विश्वास", exploreBtn: "🛍️ नया कलेक्शन देखें", trackHeroBtn: "📦 पार्सल ट्रैक करें", catalogHeading: "डिज़ाइनर और लॉन कलेक्शन", trackHeading: "अपना ऑर्डर ट्रैक करें", reviewsHeading: "ग्राहकों की समीक्षाएं", aboutHeading: "MN by Nida Amir के बारे में", orderBtn: "व्हाट्सएप पर ऑर्डर करें" },
+      it: { dir: "ltr", navShop: "Collezioni", navTrack: "Traccia Ordine", navReviews: "Recensioni", navAbout: "Chi Siamo", navSecurity: "Sicurezza", exploreBtn: "🛍️ Scopri i Nuovi Arrivi", trackHeroBtn: "📦 Traccia Pacco", catalogHeading: "Collezioni Designer & Lawn", trackHeading: "Traccia il Tuo Ordine", reviewsHeading: "Recensioni Verificate", aboutHeading: "Chi è MN by Nida Amir", orderBtn: "Ordina su WhatsApp" },
+      fr: { dir: "ltr", navShop: "Collections", navTrack: "Suivre Commande", navReviews: "Avis Clients", navAbout: "À Propos", navSecurity: "Sécurité", exploreBtn: "🛍️ Nouveautés", trackHeroBtn: "📦 Suivre Colis", catalogHeading: "Collections Couture & Lawn", trackHeading: "Suivre Votre Commande", reviewsHeading: "Avis Clients Vérifiés", aboutHeading: "À Propos de MN by Nida Amir", orderBtn: "Commander sur WhatsApp" },
+      pt: { dir: "ltr", navShop: "Coleções", navTrack: "Rastrear Pedido", navReviews: "Avaliações", navAbout: "Sobre Nós", navSecurity: "Segurança", exploreBtn: "🛍️ Ver Novidades", trackHeroBtn: "📦 Rastrear Encomenda", catalogHeading: "Coleções Designer & Lawn", trackHeading: "Rastreie Seu Pedido", reviewsHeading: "Avaliações de Clientes", aboutHeading: "Sobre MN by Nida Amir", orderBtn: "Pedir no WhatsApp" },
+      ca: { dir: "ltr", navShop: "Collections / Boutique", navTrack: "Track / Suivre", navReviews: "Reviews / Avis", navAbout: "About Us", navSecurity: "Trust & Security", exploreBtn: "🛍️ Shop New Arrivals", trackHeroBtn: "📦 Track Parcel", catalogHeading: "Featured Designer & Lawn Collections", trackHeading: "Track Your Order", reviewsHeading: "Verified Customer Reviews", aboutHeading: "About MN by Nida Amir", orderBtn: "Order on WhatsApp" }
+    };
+
+    function saveState() {
+      localStorage.setItem('mn_nida_amir_v3', JSON.stringify(storeData));
+    }
+
+    function formatPrice(pkr) {
+      const c = currencyRates[currentCurrency];
+      const val = pkr * c.rate;
+      return currentCurrency === "PKR"
+        ? `${c.symbol}${Math.round(val).toLocaleString()}`
+        : `${c.symbol}${val.toFixed(2)}`;
+    }
+
+    function renderAll() {
+      // Brand Name & Banner
+      document.getElementById('headerBrandTitle').textContent = storeData.settings.brandName;
+      document.getElementById('footerBrandName').textContent = storeData.settings.brandName;
+      document.getElementById('aboutTextDisplay').textContent = storeData.settings.aboutText;
+
+      const bannerHTML = Array(4).fill(`<span>${storeData.settings.saleBanner}</span>`).join('');
+      document.getElementById('saleBannerTrack').innerHTML = bannerHTML;
+
+      renderBrandFilters();
+      renderProducts();
+      renderReviews();
+    }
+
+    function renderBrandFilters() {
+      const bar = document.getElementById('brandFilterBar');
+      const allBtnClass = activeBrandFilter === "ALL"
+        ? "vibrant-gradient text-white shadow-md"
+        : "bg-white text-stone-700 border border-rose-200 hover:bg-rose-50";
+
+      let html = `<button onclick="setBrandFilter('ALL')" class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition ${allBtnClass}">✨ All Collections</button>`;
+
+      storeData.brands.forEach(brand => {
+        const isActive = activeBrandFilter === brand;
+        const cls = isActive
+          ? "teal-gold-gradient text-white shadow-md"
+          : "bg-white text-stone-700 border border-teal-200 hover:bg-teal-50";
+        html += `<button onclick="setBrandFilter('${brand.replace(/'/g, "\'")}')" class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition ${cls}">${brand}</button>`;
+      });
+      bar.innerHTML = html;
+    }
+
+    function setBrandFilter(brand) {
+      activeBrandFilter = brand;
+      renderBrandFilters();
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const t = translations[currentLang] || translations.en;
+
+      const filtered = storeData.products.filter(p => {
+        const matchesBrand = activeBrandFilter === "ALL" || p.brand === activeBrandFilter;
+        const matchesSearch = p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query) || p.fabric.toLowerCase().includes(query);
+        return matchesBrand && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 bg-white rounded-3xl border border-rose-100 text-stone-500 font-semibold">No outfits found in this category. Add new listings anytime from the Admin Panel!</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const waMsg = encodeURIComponent(`Assalam-o-Alaikum ${storeData.settings.brandName}! I want to order:
+*${p.name}*
+Collection: ${p.brand}
+Price: ${formatPrice(p.pricePKR)}`);
+        const waLink = `https://wa.me/${storeData.settings.whatsapp}?text=${waMsg}`;
+
+        return `
+          <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 border border-rose-100 flex flex-col group">
+            <div class="relative h-72 overflow-hidden bg-rose-50">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              ${p.badge ? `<span class="absolute top-3 left-3 vibrant-gradient text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full shadow-md">${p.badge}</span>` : ''}
+              <span class="absolute bottom-3 left-3 bg-white/95 backdrop-blur-xs text-teal-800 text-[11px] font-extrabold px-3 py-1 rounded-full shadow-xs border border-teal-100">
+                🏷️ ${p.brand}
+              </span>
+            </div>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <div class="flex items-start justify-between gap-2">
+                  <h3 class="text-lg font-extrabold text-stone-900 leading-snug">${p.name}</h3>
+                  <span class="text-lg font-extrabold text-rose-600 whitespace-nowrap">${formatPrice(p.pricePKR)}</span>
+                </div>
+                <p class="text-xs font-semibold text-teal-700 mt-1">${p.fabric}</p>
+                <p class="text-xs text-stone-600 mt-2 line-clamp-2">${p.desc}</p>
+                <div class="mt-3 flex items-center justify-between text-[11px] text-stone-500">
+                  <span>Sizes: <b class="text-stone-800">${p.sizes}</b></span>
+                  <button onclick="openModal('sizeModal')" class="text-rose-600 font-bold hover:underline">📏 Size Guide</button>
+                </div>
+              </div>
+              <a href="${waLink}" target="_blank" class="mt-4 w-full vibrant-gradient hover:opacity-95 text-white font-extrabold text-sm py-3 rounded-2xl text-center shadow-md transition flex items-center justify-center gap-2">
+                💬 ${t.orderBtn}
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderReviews() {
+      const grid = document.getElementById('reviewsGrid');
+      grid.innerHTML = storeData.reviews.map(r => `
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-amber-100">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-amber-500 text-sm">${"⭐".repeat(r.rating)}</span>
+            <span class="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full">✓ Verified Buyer</span>
+          </div>
+          <p class="text-sm text-stone-700 italic mb-4">"${r.comment}"</p>
+          <div class="text-xs font-extrabold text-stone-900">${r.name} <span class="font-normal text-stone-500">• ${r.city}</span></div>
+        </div>
+      `).join('');
+    }
+
+    function submitReview() {
+      const name = document.getElementById('revName').value.trim();
+      const city = document.getElementById('revCity').value.trim() || "Pakistan";
+      const rating = parseInt(document.getElementById('revRating').value);
+      const comment = document.getElementById('revComment').value.trim();
+      if (!name || !comment) return alert("Please enter your name and review.");
+      storeData.reviews.unshift({ name, city, rating, comment });
+      saveState();
+      renderReviews();
+      closeModal('reviewModal');
+      document.getElementById('revName').value = "";
+      document.getElementById('revComment').value = "";
+    }
+
+    function trackOrder() {
+      const q = document.getElementById('trackOrderInput').value.trim().toUpperCase();
+      const resBox = document.getElementById('trackResult');
+      const found = storeData.orders.find(o => o.id.toUpperCase() === q);
+      resBox.classList.remove('hidden');
+      if (!found) {
+        resBox.innerHTML = `<div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm font-semibold">❌ Order ID not found. Please check your receipt or contact us on WhatsApp.</div>`;
+        return;
+      }
+      resBox.innerHTML = `
+        <div class="p-5 rounded-2xl bg-teal-50 border border-teal-200 space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-teal-950 text-base">Order #${found.id}</span>
+            <span class="bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full">${found.status}</span>
+          </div>
+          <p class="text-xs text-stone-700"><b>Customer:</b> ${found.customer}</p>
+          <p class="text-xs text-stone-700"><b>Item:</b> ${found.item}</p>
+          <p class="text-xs text-teal-900 bg-white/80 p-2.5 rounded-xl border border-teal-100">🚚 ${found.note}</p>
+        </div>
+      `;
+    }
+
+    // ==================== ADMIN FUNCTIONS ====================
+    function openAdminGate() {
+      document.getElementById('adminPinInput').value = "";
+      openModal('pinModal');
+    }
+
+    function verifyAdminPin() {
+      const entered = document.getElementById('adminPinInput').value.trim();
+      if (entered === storeData.settings.pin) {
+        closeModal('pinModal');
+        populateAdminPanel();
+        openModal('adminModal');
+      } else {
+        alert("Incorrect PIN! Default PIN is 1234.");
+      }
+    }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.admin-tab').forEach(el => {
+        el.classList.remove('bg-white', 'text-rose-600', 'shadow-xs');
+        el.classList.add('text-stone-600');
+      });
+      document.getElementById(tabId).classList.remove('hidden');
+      const btn = document.getElementById('btn-' + tabId);
+      btn.classList.add('bg-white', 'text-rose-600', 'shadow-xs');
+      btn.classList.remove('text-stone-600');
+    }
+
+    function populateAdminPanel() {
+      // Populate Brand Dropdown
+      const sel = document.getElementById('prodBrandSelect');
+      sel.innerHTML = storeData.brands.map(b => `<option value="${b}">${b}</option>`).join('');
+      if (storeData.brands.length > 0) {
+        document.getElementById('prodBrandCustom').value = storeData.brands[0];
+      }
+
+      // Render Admin Products
+      document.getElementById('adminProductsList').innerHTML = storeData.products.map(p => `
+        <div class="flex items-center justify-between gap-3 bg-stone-50 border border-stone-200 p-3 rounded-2xl">
+          <div class="flex items-center gap-3">
+            <img src="${p.image}" class="w-12 h-12 rounded-xl object-cover" />
+            <div>
+              <div class="font-bold text-sm text-stone-900">${p.name}</div>
+              <div class="text-xs text-teal-700 font-semibold">${p.brand} • Rs. ${p.pricePKR}</div>
+            </div>
+          </div>
+          <div class="flex gap-1.5">
+            <button onclick="editProduct(${p.id})" class="bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-bold px-3 py-1.5 rounded-xl">Edit</button>
+            <button onclick="deleteProduct(${p.id})" class="bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-bold px-3 py-1.5 rounded-xl">Delete</button>
+          </div>
+        </div>
+      `).join('');
+
+      // Render Editable Brands List
+      document.getElementById('adminBrandsList').innerHTML = storeData.brands.map((b, idx) => `
+        <div class="flex items-center gap-2 bg-white border border-teal-200 p-2.5 rounded-2xl shadow-2xs">
+          <input type="text" value="${b}" id="brandEditInput_${idx}" class="flex-grow text-sm font-bold text-stone-800 px-2 py-1 border-b border-transparent focus:border-teal-500 focus:outline-none" />
+          <button onclick="renameBrand(${idx})" class="bg-teal-100 hover:bg-teal-200 text-teal-900 text-xs font-bold px-2.5 py-1.5 rounded-xl">Rename</button>
+          <button onclick="deleteBrand(${idx})" class="bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-bold px-2.5 py-1.5 rounded-xl">✕</button>
+        </div>
+      `).join('');
+
+      // Render Orders
+      document.getElementById('adminOrdersList').innerHTML = storeData.orders.map((o, idx) => `
+        <div class="flex items-center justify-between bg-stone-50 border border-stone-200 p-3 rounded-2xl text-xs">
+          <div>
+            <b>#${o.id}</b> — ${o.customer} (${o.item})<br/>
+            <span class="text-teal-700 font-bold">${o.status}</span> • ${o.note}
+          </div>
+          <button onclick="deleteOrder(${idx})" class="bg-rose-100 text-rose-700 font-bold px-2.5 py-1 rounded-lg">Delete</button>
+        </div>
+      `).join('');
+
+      // Settings Fields
+      document.getElementById('setBrandName').value = storeData.settings.brandName;
+      document.getElementById('setWhatsapp').value = storeData.settings.whatsapp;
+      document.getElementById('setSaleBanner').value = storeData.settings.saleBanner;
+      document.getElementById('setAboutText').value = storeData.settings.aboutText;
+    }
+
+    function syncBrandInput(val) {
+      document.getElementById('prodBrandCustom').value = val;
+    }
+
+    function handleProductImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('prodImageUrl').value = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function saveProduct() {
+      const editId = document.getElementById('editProductId').value;
+      const name = document.getElementById('prodName').value.trim();
+      const brand = document.getElementById('prodBrandCustom').value.trim() || "Festive Lawn '26";
+      const pricePKR = parseFloat(document.getElementById('prodPrice').value) || 5000;
+      const fabric = document.getElementById('prodFabric').value.trim() || "Premium Lawn 3-Piece";
+      const sizes = document.getElementById('prodSizes').value.trim() || "Unstitched, S, M, L";
+      const badge = document.getElementById('prodBadge').value.trim();
+      const image = document.getElementById('prodImageUrl').value.trim() || "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80";
+      const desc = document.getElementById('prodDesc').value.trim() || "Vibrant seasonal luxury ensemble.";
+
+      if (!name) return alert("Please enter outfit title.");
+
+      // Auto-add new brand name to filter list if not already present!
+      if (!storeData.brands.includes(brand)) {
+        storeData.brands.push(brand);
+      }
+
+      if (editId) {
+        const idx = storeData.products.findIndex(p => p.id == editId);
+        if (idx > -1) storeData.products[idx] = { id: Number(editId), name, brand, pricePKR, fabric, sizes, badge, image, desc };
+      } else {
+        storeData.products.unshift({ id: Date.now(), name, brand, pricePKR, fabric, sizes, badge, image, desc });
+      }
+
+      saveState();
+      resetProductForm();
+      populateAdminPanel();
+      renderAll();
+    }
+
+    function editProduct(id) {
+      const p = storeData.products.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('editProductId').value = p.id;
+      document.getElementById('productFormTitle').textContent = "✏️ Edit Suit Listing";
+      document.getElementById('prodName').value = p.name;
+      document.getElementById('prodBrandCustom').value = p.brand;
+      document.getElementById('prodPrice').value = p.pricePKR;
+      document.getElementById('prodFabric').value = p.fabric;
+      document.getElementById('prodSizes').value = p.sizes;
+      document.getElementById('prodBadge').value = p.badge;
+      document.getElementById('prodImageUrl').value = p.image;
+      document.getElementById('prodDesc').value = p.desc;
+    }
+
+    function deleteProduct(id) {
+      if (!confirm("Delete this listing?")) return;
+      storeData.products = storeData.products.filter(p => p.id !== id);
+      saveState();
+      populateAdminPanel();
+      renderAll();
+    }
+
+    function resetProductForm() {
+      document.getElementById('editProductId').value = "";
+      document.getElementById('productFormTitle').textContent = "➕ Add New Outfit / Suit Listing";
+      ['prodName', 'prodPrice', 'prodFabric', 'prodSizes', 'prodBadge', 'prodImageUrl', 'prodDesc'].forEach(id => document.getElementById(id).value = "");
+    }
+
+    // Dynamic Brand / Lawn Name Controls
+    function addBrandName() {
+      const val = document.getElementById('newBrandNameInput').value.trim();
+      if (!val) return;
+      if (!storeData.brands.includes(val)) {
+        storeData.brands.push(val);
+        saveState();
+        document.getElementById('newBrandNameInput').value = "";
+        populateAdminPanel();
+        renderAll();
+      }
+    }
+
+    function renameBrand(idx) {
+      const oldName = storeData.brands[idx];
+      const newName = document.getElementById(`brandEditInput_${idx}`).value.trim();
+      if (!newName || oldName === newName) return;
+      storeData.brands[idx] = newName;
+      // Update all products carrying the old brand name
+      storeData.products.forEach(p => { if (p.brand === oldName) p.brand = newName; });
+      if (activeBrandFilter === oldName) activeBrandFilter = newName;
+      saveState();
+      populateAdminPanel();
+      renderAll();
+    }
+
+    function deleteBrand(idx) {
+      storeData.brands.splice(idx, 1);
+      activeBrandFilter = "ALL";
+      saveState();
+      populateAdminPanel();
+      renderAll();
+    }
+
+    function saveOrder() {
+      const id = document.getElementById('ordId').value.trim();
+      const customer = document.getElementById('ordCustomer').value.trim();
+      const item = document.getElementById('ordItem').value.trim();
+      const status = document.getElementById('ordStatus').value;
+      const note = document.getElementById('ordNote').value.trim();
+      if (!id || !customer) return alert("Enter Order ID and Customer Name.");
+      const existingIdx = storeData.orders.findIndex(o => o.id.toUpperCase() === id.toUpperCase());
+      if (existingIdx > -1) {
+        storeData.orders[existingIdx] = { id, customer, item, status, note };
+      } else {
+        storeData.orders.unshift({ id, customer, item, status, note });
+      }
+      saveState();
+      populateAdminPanel();
+      ['ordId', 'ordCustomer', 'ordItem', 'ordNote'].forEach(i => document.getElementById(i).value = "");
+    }
+
+    function deleteOrder(idx) {
+      storeData.orders.splice(idx, 1);
+      saveState();
+      populateAdminPanel();
+    }
+
+    function saveStoreSettings() {
+      storeData.settings.brandName = document.getElementById('setBrandName').value.trim() || "MN by Nida Amir";
+      storeData.settings.whatsapp = document.getElementById('setWhatsapp').value.trim() || "923001234567";
+      storeData.settings.saleBanner = document.getElementById('setSaleBanner').value.trim();
+      storeData.settings.aboutText = document.getElementById('setAboutText').value.trim();
+      const newPin = document.getElementById('setNewPin').value.trim();
+      if (newPin) storeData.settings.pin = newPin;
+      saveState();
+      renderAll();
+      alert("✅ Store settings updated successfully!");
+    }
+
+    // ==================== THEME, LANGUAGE & CURRENCY ====================
+    function changeLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang] || translations.en;
+      document.documentElement.setAttribute('dir', t.dir);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+      renderProducts();
+    }
+
+    function changeCurrency(curr) {
+      currentCurrency = curr;
+      renderProducts();
+    }
+
+    function changeFont(fontClass) {
+      document.body.classList.remove('font-editorial', 'font-royal', 'font-modern');
+      document.body.classList.add(fontClass);
+    }
+
+    function setWallpaperPreset(preset) {
+      document.body.style.backgroundImage = "none";
+      if (preset === 'cream') document.body.style.background = "#FFFBF7";
+      if (preset === 'rose') document.body.style.background = "linear-gradient(135deg, #FFE4E6 0%, #FEF3C7 50%, #CCFBF1 100%)";
+      if (preset === 'mint') document.body.style.background = "linear-gradient(135deg, #CCFBF1 0%, #ECFDF5 50%, #FEF3C7 100%)";
+      if (preset === 'sunset') document.body.style.background = "linear-gradient(135deg, #FEF3C7 0%, #FFEDD5 50%, #FFE4E6 100%)";
+      localStorage.setItem('mn_wallpaper_style', document.body.style.background);
+      closeModal('wallpaperModal');
+    }
+
+    function uploadCustomWallpaper(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const bgUrl = `url('${evt.target.result}')`;
+        document.body.style.backgroundImage = bgUrl;
+        localStorage.setItem('mn_wallpaper_img', bgUrl);
+        closeModal('wallpaperModal');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function openModal(id) {
+      const m = document.getElementById(id);
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // Restore saved wallpaper if present
+    const savedBgImg = localStorage.getItem('mn_wallpaper_img');
+    const savedBgStyle = localStorage.getItem('mn_wallpaper_style');
+    if (savedBgImg) document.body.style.backgroundImage = savedBgImg;
+    else if (savedBgStyle) document.body.style.background = savedBgStyle;
+
+    // Initial Render
+    renderAll();
+  </script>
+</body>
+</html>
